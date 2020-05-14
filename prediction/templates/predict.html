@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block block-content %}
+<div class='text-center'>
+  <h2> Perform Pixelwise Semantic Segmentation: </h2>
+  <br />
+  <br />
+</div>
+
+<div class='text-center'>
+  {% if error %}
+  <h2 class='text-danger'>{{ error }}</h2>
+  <br />
+  <br />
+  {% endif %}
+</div>
+
+<div class='text-center'>
+  <form method='POST' action='{% url 'predict' %}' enctype='multipart/form-data'>
+  {% csrf_token %}
+
+  Select an Image to perform Semantic Segmentation using trained DeepLabV3+ Model: 
+  <br />
+  <br />
+  <input type='file' name='image' />
+  <br />
+  <br />
+
+  <input class='btn-primary' type='submit' value='Make Prediction' />
+
+  </form>
+  <br />
+</div>
+
+{% if input %}
+  <br />
+<div class="row">
+  <div class="col-6">
+    <p> Original Image: </p>
+    <img src="{{ input.img.url }}" height=500 width=700 class="img-fluid" />
+  </div>
+  <div class="col-6">
+    <p> Pixelwise Segmented Image:</p>
+    <img src="{{ result }}" height=500 width=700 class="img-fluid" />
+  </div>
+</div>
+{% endif %}
+
+{% endblock block-content %}

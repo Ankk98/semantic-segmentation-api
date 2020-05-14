@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block block-content %}
+<div class='row text-centre'>
+  <h1> About Project: </h1>
+  <br />
+  <br />
+</div>
+
+<div class='row text-centre'>
+    <h3>Abstract: </h3>
+    <p> The ability to perform pixel-wise semantic segmentation in real-time is of paramount
+    importance in mobile applications. There are a plethora of approaches to achieve this
+    task, deep neural networks being the most efficient of them all. 
+    <br />
+    <br />
+    However, the deep neural networks aimed to achieve this task have the disadvantages of requiring a
+    large number of floating point operations and have long run-times that hinder their
+    usability. Subsequently, these networks are not accepted to be good for real-time
+    processing. 
+    <br />
+    <br />
+    This project implements a fast architecture that can be potentially used
+    in an embedded system in a mobile unit. A good computation is achieved through
+    reducing the complexities of the networks without compromising much of the accu-
+    Racy. 
+    <br />
+    <br />
+    Furthermore, we have a champion model based on certain parameters and given trade-offs. 
+    Our main aim is to make efficient use of scarce resources available on embedded platforms, 
+    compared to fully-fledged deep learning models and extending it to a Website Application that 
+    will enable users to predict using the given model on certain parameters through APIs.</p>
+    <br />
+    <br />
+</div>
+
+<div class='row text-centre'>
+    <h3>About Algorithm (DeepLabV3+):</h3>
+    <br />
+    <br />
+    <img src="{% static 'architecture.png' %}" height=551 width=1037 class="text-centre" />
+    <br />
+    <br />
+    <p>
+    DeepLabV3+ is one of the best segmentation models out there, with a mIoU score of 89% for PascalVOC. It consists of complex architecture and multiple techniques including atrous convolutions, depthwise convolution and pointwise convolution. All of these techniques contribute to the high level learnings this model is able to extract. The Decoder of this model focuses on combining low level and high level features and use them together to form an upsampled map which is finally used to segment between various classes present in the image.
+    <br />
+    <br />
+    Contrasting to ENet, DeepLabV3+ is performance based and doesn’t focus on reducing complexity in time or in computation. This is the reason the model has over 2 million parameters and takes its time while training.
+    <br />
+    <br />
+    The DeepLabV3+ is the latest rendition of the DeepLab models, the first of which was created in 2016. With every release the model was updated further to enhance the performance. The following improvements have been made to the model since its initial release in 2016:
+    <br />
+    <br />
+    DeepLab-V1: Using atrous convolution to control the resolution of feature responses in CNNs. This is also known as dilated convolution and introduces another parameter, the dilation rate, to convolution layers, which spaces the convoluted pixels in a wider field of view, while still having the same number of weights
+    <br />
+    <br />
+    DeepLab-V2: Using atrous spatial pyramid pooling (ASPP), which helps to account for different object scales and improves accuracy.
+    <br />
+    <br />
+    DeepLab-V3: Adding image-level features to ASPP and applying batch normalization for easier training.
+    <br />
+    <br />
+    DeepLab-V3+: Extension of DeepLabv3 by a decoder module to refine the segmentation results.
+    </p>
+    <br />
+    <br />
+</div>
+
+
+<div class='row'>
+
+<br />
+<br />
+</div>
+
+{% endblock block-content %}
