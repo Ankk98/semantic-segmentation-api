@@ -62,6 +62,9 @@ def predict(request):
 def about(request):
     return render(request, 'about.html')
 
+def home(request):
+    return redirect('predict/')
+
 # api views
 class PredictAPIView(APIView):
     parser_class = (FileUploadParser,)
