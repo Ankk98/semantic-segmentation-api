@@ -2,14 +2,14 @@
 Web application and REST Api to serve DeepLabV3+ model to perform semantic segmentation on the input image.
 
 ### Tech stack
-Backend - Django, Django rest framework 3.11
-Frontend - HTML, CSS, JavaScript, Bootstrap, Jinja Templating Engine
-To test apis - Postman
+- Backend - Django, Django rest framework
+- Frontend - HTML, CSS, JavaScript, Bootstrap, Jinja Templating Engine
+- To test apis - Postman
 
-### Versions Tested with
+### Tested on
 - Python 3.6.4
-- Django 2.2
-- DRF 3.11
+- Django 3
+- Django rest framework 3.11
 - django-cors-headers 3.2.1
 - OS - Ubuntu 18 LTS 
 
@@ -23,7 +23,7 @@ To test apis - Postman
 - setup-env.sh --> Bash script to setup env required for the model
 - predict-with-deeplabv3-script.sh --> Bash script to run inference script with environment, used by webapp 
 
-### Steps
+### Steps to run locally
 1. Make sure you have right dependencies
 2. Run setup-env.sh
 3. python manage.py migrate
@@ -32,12 +32,37 @@ To test apis - Postman
 
 ### Working
 - Web: Run at /predict, Upload Image and it will segment the image and then show both images as comparison.
-- API: Upload the image with a POST request to the server at /predict-api with an image as img field and it will respond with a link to the location of output image. 
+- API: Upload the image with a POST request to the server at /predict-api with an image as img field and it will respond with a path to the location of output image. 
+
+### APIs
+- /predict --> Return webpage with functionality to upload an image and get inferred image.
+- /about --> Returns about page
+- /predict-api --> Takes post requests with an image field as 'img' and returns path to inferred image.
 
 ### Credits
-- Special thanks to original the author of DeeplabV3 and its implementation
+- Special thanks to original the author of DeeplabV3+ and its implementation
 - Mr Himanshu Mittal for guidance on major project
 
 ### Note
-- Size of model is large in termas of disk space, making size of project large.
+- Size of model is large in terms of disk space, making size of project large.
 - It would be better to use docker to run the model.
+- It would be better to use a webserver like nginx to serve inferred images.
+- Not for production (It is a simple College Project)
+
+### Screenshots
+- Website front page
+![GitHub Logo](/screenshots/ss_front_page.png)
+- After prediction
+![GitHub Logo](/screenshots/ss-output.png)
+- API response in postman
+![GitHub Logo](/screenshots/Screenshot_postman.png)
+- About page
+![GitHub Logo](/screenshots/ss-about-page.png)
+- Running django server using vscode
+![GitHub Logo](/screenshots/Screenshot_code.png)
+- Classes it is able to predict
+![GitHub Logo](/predict-with-deeplabv3/colour_scheme.png)
+
+### References
+- https://github.com/rishizek/tensorflow-deeplab-v3-plus
+- https://github.com/DrSleep/tensorflow-deeplab-resnet 
