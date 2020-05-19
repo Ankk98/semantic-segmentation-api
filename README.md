@@ -8,36 +8,36 @@ Web application and REST Api to serve DeepLabV3+ model to perform semantic segme
 
 ### Tested on
 - Python 3.6.4
-- Django 3
+- Django 3.0.6
 - Django rest framework 3.11
 - django-cors-headers 3.2.1
 - OS - Ubuntu 18 LTS 
 
 ### Directories
-- /frontend --> To test apis 
-- /media/images --> Stores Input Images
-- /predict-with-deeplabv3 --> contains Deeplabv3 model and scripts
-- /prediction --> App with prediction logic
-- /sample-images --> Sample images to test
-- /semantic-segmentation-api --> Main folder, contains settings 
-- setup-env.sh --> Bash script to setup env required for the model
-- predict-with-deeplabv3-script.sh --> Bash script to run inference script with environment, used by webapp 
+- `/frontend` --> To test apis 
+- `/media/images` --> Stores Input Images
+- `/predict-with-deeplabv3` --> contains Deeplabv3 model and scripts
+- `/prediction` --> App with prediction logic
+- `/sample-images` --> Sample images to test
+- `/semantic-segmentation-api` --> Main folder, contains settings 
+- `setup-env.sh` --> Bash script to setup env required for the model
+- `predict-with-deeplabv3-script.sh` --> Bash script to run inference script with environment, used by webapp 
 
 ### Steps to run locally
 1. Make sure you have right dependencies
-2. Run setup-env.sh
-3. python manage.py migrate
-4. python manage.py migrate --run-syncdb
-5. python manage.py runserver
+2. Run `setup-env.sh`
+3. `python manage.py migrate`
+4. `python manage.py migrate --run-syncdb`
+5. `python manage.py runserver`
 
 ### Working
-- Web: Run at /predict, Upload Image and it will segment the image and then show both images as comparison.
-- API: Upload the image with a POST request to the server at /predict-api with an image as img field and it will respond with a path to the location of output image. 
+- **Web**: Run at /predict, Upload Image and it will segment the image and then show both images as comparison.
+- **API**: Upload the image with a POST request to the server at /predict-api with an image as img field and it will respond with a path to the location of output image. 
 
 ### APIs
-- /predict --> Return webpage with functionality to upload an image and get inferred image.
-- /about --> Returns about page
-- /predict-api --> Takes post requests with an image field as 'img' and returns path to inferred image.
+- `/predict` --> Return webpage with functionality to upload an image and get inferred image.
+- `/about` --> Returns about page
+- `/predict-api` --> Takes post requests with an image field as 'img' and returns path to inferred image.
 
 ### Credits
 - Special thanks to original the author of DeeplabV3+ and its implementation

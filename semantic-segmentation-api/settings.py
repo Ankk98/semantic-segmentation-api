@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'prediction',
     'rest_framework',
     'corsheaders',
-    # 'accounts'
 ]
 
 MIDDLEWARE = [
