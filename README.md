@@ -5,13 +5,14 @@ Web application and REST Api to serve DeepLabV3+ model to perform semantic segme
 - Backend - Django, Django rest framework
 - Frontend - HTML, CSS, JavaScript, Bootstrap, Jinja Templating Engine
 - To test apis - Postman
+- For virtual environment- pyenv
 
 ### Tested on
-- Python 3.6.4
+- Python 3.6.8
 - Django 3.0.6
-- Django rest framework 3.11
+- Django rest framework 3.11.0
 - django-cors-headers 3.2.1
-- OS - Ubuntu 18 LTS 
+- OS - Ubuntu 20 LTS 
 
 ### Directories
 - `/frontend` --> To test apis 
@@ -23,9 +24,10 @@ Web application and REST Api to serve DeepLabV3+ model to perform semantic segme
 - `setup-env.sh` --> Bash script to setup env required for the model
 - `predict-with-deeplabv3-script.sh` --> Bash script to run inference script with environment, used by webapp 
 
-### Steps to run locally
-1. Make sure you have right dependencies
+### Steps to run locally (On Linux based distro)
+1. Install `pyenv`
 2. Run `setup-env.sh`
+3. `pyenv local venvSSA`
 3. `python manage.py migrate`
 4. `python manage.py migrate --run-syncdb`
 5. `python manage.py runserver`

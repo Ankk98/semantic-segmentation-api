@@ -1,6 +1,7 @@
 #!/bin/bash
 pwd
-source "${PWD}/predict-with-deeplabv3/venv/bin/activate"
+# source "${PWD}/predict-with-deeplabv3/venv/bin/activate"
+pyenv local venvSSA
 echo 'path of python: ---------------------------------------------------------------'
 which python
 ls "${PWD}/predict-with-deeplabv3/dataset"

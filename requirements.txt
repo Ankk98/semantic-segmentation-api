@@ -1,6 +1,10 @@
 absl-py==0.9.0
+asgiref==3.2.7
 astor==0.8.1
 cycler==0.10.0
+Django==3.0.6
+django-cors-headers==3.3.0
+djangorestframework==3.11.0
 gast==0.3.3
 grpcio==1.28.1
 h5py==2.10.0
@@ -15,7 +19,9 @@ Pillow==7.1.2
 protobuf==3.11.3
 pyparsing==2.4.7
 python-dateutil==2.8.1
+pytz==2020.1
 six==1.14.0
+sqlparse==0.3.1
 tensorboard==1.12.2
 tensorflow==1.12.0
 termcolor==1.1.0
