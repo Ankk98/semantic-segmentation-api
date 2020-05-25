@@ -50,6 +50,7 @@ def perform_inference(path):
     ]
 
     # call script to run inference file
+
     subprocess.run(inferrence_command)
 
     path_of_result_img = dataset_path + "/inference_output/image_mask.png"
@@ -102,6 +103,11 @@ class PredictAPIView(APIView):
 
         if input_serializer.is_valid():
             input_serializer.save()
-            return Response(input_serializer.data, status=status.HTTP_201_CREATED)
+            response_data = {
+                "input_image_url": input_serializer.data["input_image_url"],
+                "output_image_url": input_serializer.data["output_image_url"],
+            }
+            print(response_data)
+            return Response(response_data, status=status.HTTP_201_CREATED)
         else:
             return Response(input_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
