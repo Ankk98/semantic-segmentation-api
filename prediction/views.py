@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 import os
 from .models import Prediction
 import subprocess
@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import InputSerializer
+
 
 # web views
 def perform_inference(path):
@@ -30,8 +31,26 @@ def perform_inference(path):
     print("initial path of image -------------------------------" + path)
     copyfile(path, destination_path)
 
+    inference_script = code_path + "/inference.py"
+    inference_data_list = code_path + "/dataset/infer.txt"
+    inference_model_dir = code_path + "/model"
+    inference_data_dir = code_path + "/dataset"
+    inference_output_dir = code_path + "/dataset/inference_output"
+    inferrence_command = [
+        "python3",
+        inference_script,
+        "--infer_data_list",
+        inference_data_list,
+        "--model_dir",
+        inference_model_dir,
+        "--data_dir",
+        inference_data_dir,
+        "--output_dir",
+        inference_output_dir,
+    ]
+
     # call script to run inference file
-    subprocess.call(infer_script_path)
+    subprocess.run(inferrence_command)
 
     path_of_result_img = dataset_path + "/inference_output/image_mask.png"
     result_path = "/media/images/image.png"
@@ -86,4 +105,3 @@ class PredictAPIView(APIView):
             return Response(input_serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(input_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
