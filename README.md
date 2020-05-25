@@ -65,6 +65,12 @@ Web application and REST Api to serve DeepLabV3+ model to perform semantic segme
 - Classes it is able to predict
 ![GitHub Logo](/predict-with-deeplabv3/colour_scheme.png)
 
+### Todos
+- Update inferrence script to support latest tensorflow version
+- Fix api output 
+- Fix predict page
+- 
+
 ### References
 - https://github.com/rishizek/tensorflow-deeplab-v3-plus
 - https://github.com/DrSleep/tensorflow-deeplab-resnet 
