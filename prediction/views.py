@@ -16,19 +16,25 @@ from .serializers import InputSerializer
 def perform_inference(path):
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print("base path----------" + base_path)
+
     code_path = (
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         + "/predict-with-deeplabv3"
     )
     print("model path---------" + code_path)
+
     infer_script_path = base_path + "/predict-with-deeplabv3-script.sh"
     print("inference script path------------" + infer_script_path)
+
     dataset_path = code_path + "/dataset"
     print("dataset path-----------------" + dataset_path)
+
     destination_path = dataset_path + "/image.png"
     print("destination path-------------" + destination_path)
 
     print("initial path of image -------------------------------" + path)
+
+    # copy input image for prediction
     copyfile(path, destination_path)
 
     inference_script = code_path + "/inference.py"
@@ -49,15 +55,20 @@ def perform_inference(path):
         inference_output_dir,
     ]
 
-    # call script to run inference file
-
+    # call script to run inference file --- predict
     subprocess.run(inferrence_command)
 
     path_of_result_img = dataset_path + "/inference_output/image_mask.png"
-    result_path = "/media/images/image.png"
+    filename = os.path.split(path)
+    result_path = "/media/images/" + filename[-1]
     destination2_path = base_path + result_path
+    destination2_path = destination2_path.split('.')[0] + '_mask.png'
+    print("Result image --------------------------" + destination2_path)
+
+    # copy mask image to media/images
     copyfile(path_of_result_img, destination2_path)
 
+    result_path = "/media/images/" + os.path.split(destination2_path)[-1]
     return result_path
 
 
@@ -68,12 +79,16 @@ def predict(request):
             input = Prediction()
             input.img = request.FILES["image"]
             input.save()
+
             BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             print("project location--------------" + BASE_DIR)
+
             path_of_img = BASE_DIR + input.img.url
-            print("path of image--------------" + path_of_img)
+            print("path of image-----------" + path_of_img)
+
             path_of_result_img = perform_inference(path_of_img)
-            print("path of result image--------------" + path_of_result_img)
+            print("path of result image-----------" + path_of_result_img)
+
             input.output_img = path_of_result_img
 
             return render(
@@ -91,6 +106,7 @@ def about(request):
 
 def home(request):
     return redirect("predict/")
+
 
 # api views
 class PredictAPIView(APIView):
