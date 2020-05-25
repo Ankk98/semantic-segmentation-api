@@ -92,7 +92,6 @@ def about(request):
 def home(request):
     return redirect("predict/")
 
-
 # api views
 class PredictAPIView(APIView):
     parser_class = (FileUploadParser,)

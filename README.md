@@ -67,8 +67,7 @@ Web application and REST Api to serve DeepLabV3+ model to perform semantic segme
 
 ### Todos
 - Update inferrence script to support latest tensorflow version
-- Fix api output 
-- Fix predict page 
+- Fix api output  
 
 ### References
 - https://github.com/rishizek/tensorflow-deeplab-v3-plus

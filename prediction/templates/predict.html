@@ -2,6 +2,8 @@
 
 {% block block-content %}
 <div class='text-center'>
+  <br />
+  <br />
   <h2> Perform Pixelwise Semantic Segmentation: </h2>
   <br />
   <br />
@@ -15,25 +17,26 @@
   {% endif %}
 </div>
 
+{% if not input %}
 <div class='text-center'>
-  <form method='POST' action='{% url 'predict' %}' enctype='multipart/form-data'>
-  {% csrf_token %}
+  <form method='POST' action="{% url 'predict' %}" enctype='multipart/form-data'>
+    {% csrf_token %}
 
-  Select an Image to perform Semantic Segmentation using trained DeepLabV3+ Model: 
-  <br />
-  <br />
-  <input type='file' name='image' />
-  <br />
-  <br />
+    Select an Image to perform Semantic Segmentation using trained DeepLabV3+ Model:
+    <br />
+    <br />
+    <input type='file' name='image' />
+    <br />
+    <br />
 
-  <input class='btn-primary' type='submit' value='Make Prediction' />
-
+    <input class='btn-primary' type='submit' value='Make Prediction' />
   </form>
   <br />
 </div>
+{% endif %}
 
 {% if input %}
-  <br />
+<br />
 <div class="row">
   <div class="col-6">
     <p> Original Image: </p>
@@ -43,6 +46,14 @@
     <p> Pixelwise Segmented Image:</p>
     <img src="{{ result }}" height=500 width=700 class="img-fluid" />
   </div>
+</div>
+
+<div class='text-center'>
+  <form method='GET' action="{% url 'predict' %}" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <button class='btn-primary' type="submit">Make another prediction</button>
+  </form>
+  <br />
 </div>
 {% endif %}
 
