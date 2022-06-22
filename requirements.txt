@@ -21,7 +21,7 @@ kiwisolver==1.2.0
 Markdown==3.2.2
 matplotlib==3.2.1
 mccabe==0.6.1
-numpy==1.18.4
+numpy==1.22.0
 opt-einsum==3.2.1
 pathspec==0.8.0
 Pillow==7.1.2
